@@ -1,0 +1,84 @@
+import { Meta, Story, Preview, Canvas } from "@storybook/addon-docs/blocks";
+import Chip from "@material-ui/core/Chip";
+
+<Meta title="MDX/Chip" />
+
+export const Template = (args) => <Chip {...args} />;
+
+# Exmple Story Using MDX
+
+This is an example of how we can create a prototype view using markdown language with embeded jsx.
+
+We can drop it in a `Preview` to get a code snippet:
+
+<Preview>
+  <Chip label="Basic" />
+</Preview>
+
+The above can be writen as a story like:
+```
+<Story name="basic" >
+  <Chip label="Basic" />
+</Story>
+```
+Or templated like:
+```
+export const Template = (args) => <Chip {...args} />;
+<Story
+  name="basic"
+  args={{
+    label: "Basic",
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+```
+
+<Story
+  name="basic"
+  args={{
+    label: "Basic",
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+We can drop it in a `Canvas` to get a code snippet:
+
+<Canvas>
+  <Story
+    name="clickable"
+    args={{
+      label: "clickable",
+      onClick: () => {},
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+We can even preview multiple stories in a block. This
+gets rendered as a group, but defines individual stories
+with unique URLs and isolated snapshot tests.
+
+<Canvas>
+  <Story
+    name="deletable"
+    args={{
+      label: "deletable",
+      onDelete: () => {},
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="secondary"
+    args={{
+      label: "secondary",
+      color: "secondary",
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
